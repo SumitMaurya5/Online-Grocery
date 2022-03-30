@@ -1,0 +1,121 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block content %}
+    <!-- Start Banner Area -->
+    <section class="banner-area organic-breadcrumb">
+        <div class="container">
+            <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+                <div class="col-first">
+                    <h1>Shopping Cart</h1>
+                    <nav class="d-flex align-items-center">
+                        <a href="index.html">Home<span class="lnr lnr-arrow-right"></span></a>
+                        <a href="category.html">Cart</a>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Banner Area -->
+
+    <!--================Cart Area =================-->
+    <section class="cart_area">
+        <div class="container">
+            <div class="cart_inner">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Product</th>
+                                <th scope="col">Price</th>
+                                <th scope="col">Quantity</th>
+                                <th scope="col">Action</th>
+                                <th scope="col">Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>{% for cp in cart.cartproduct_set.all %}
+                                <td>
+                                    <div class="media">
+                                        <div class="d-flex">
+                                            <img src="{{ cp.product.image.url }}" alt="" style="height: 80px; width: 80px;">
+                                        </div>
+                                        <div class="media-body">
+                                            <p>{{cp.product.title}}</p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <h5>Rs.{{cp.rate}}</h5>
+                                </td>
+                                <td><h5>{{cp.quantity}}</h5>
+                                    <td>
+                                        <a href="{% url 'managecart' cp.id %}?action=inc "><i style="color: black;"class="fa fa-plus" aria-hidden="true"></i></a>&nbsp;&nbsp;
+                                        <a href="{% url 'managecart' cp.id %}?action=dcr " ><i style="color: black;"class="fa fa-minus" aria-hidden="true"></i></a>&nbsp;&nbsp;
+                                        <a href="{% url 'managecart' cp.id %}?action=rmv "><i style="color: black;" class="fa fa-close" aria-hidden="true"></i> </a>
+                                    </td>
+                                </td>
+                                <td>
+                                    <h5>Rs.{{cp.subtotal}}</h5>
+                                </td>
+                            </tr>{% endfor %}
+                            <tr class="bottom_button">
+                                <td>
+                                    
+                                </td>
+                                <td>
+
+                                </td>
+                                <td>
+
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    {% if cart.cartproduct_set.all %}
+                                    <h5><a href="{% url 'emptycart' %}">Empty My Cart</a></h5>
+                                    {% endif %}
+                                </td>
+
+                                <td>
+
+                                </td>
+                                <td></td>
+                                <td>
+                                    <h5>Subtotal</h5>
+                                </td>
+                                <td>
+                                    <h5>Rs. {{cart.total}}</h5>
+                                </td>
+                            </tr>
+                            <tr class="shipping_area">
+                                <td>
+
+                                </td>
+                                <td>
+
+                                </td>
+                            </tr>
+                            <tr class="out_button_area">
+                                <td>
+
+                                </td>
+                                <td>
+
+                                </td>
+                                <td>
+
+                                </td>
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--================End Cart Area =================-->
+
+   {% endblock %}

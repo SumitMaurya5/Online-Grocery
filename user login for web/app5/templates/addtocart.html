@@ -1,0 +1,38 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block content %}
+	<!-- Start Banner Area -->
+	<section class="banner-area organic-breadcrumb">
+		<div class="container">
+			<div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+				<div class="col-first">
+					<h1>Cart</h1>
+					<nav class="d-flex align-items-center">
+						<a href="index.html">Home<span class="lnr lnr-arrow-right"></span></a>
+						<a href="cart.html">Cart</a>
+					</nav>
+				</div>
+			</div>
+		</div>
+    </section>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h3>Product added to cart successfully.</h3>
+                <input type="button" class="btn btn-info" value="Cart" onclick=" relocate_home()">
+
+    <script>
+    function relocate_home()
+    {
+         location.href = "http://127.0.0.1:8080/my_cart/";
+    } 
+    </script>
+            </div>
+        </div>
+    </div>
+	<!-- End Banner Area -->
+
+	<!--================Contact Area =================-->
+	<!--================Contact Area =================-->
+{% endblock %}

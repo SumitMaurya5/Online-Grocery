@@ -1,0 +1,48 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block content %}
+
+<section class="banner-area organic-breadcrumb">
+    <div class="container">
+        <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+            <div class="col-first">
+                <h1>Search Products Page</h1>
+                <nav class="d-flex align-items-center">
+                    <a href="index.html">Home<span class="lnr lnr-arrow-right"></span></a>
+                    <!-- <a href="#">Shop<span class="lnr lnr-arrow-right"></span></a> -->
+                    <a href="search.html">product-details</a>
+                </nav>
+            </div>
+        </div>
+    </div>
+</section>
+
+{{ error }}
+{% if post %}
+<div class="row justify-content-center">
+    <div class="col-lg-3 text-center">
+        <div class="section-title">
+            <h1>Search Not Found</h1>
+        </div>
+    </div>
+</div>
+    <br>
+
+    {% for i in post %}
+    <center><h2><a href="{% url 'prodetails' i.title %}">{{i.title}}</a></h2></center>
+
+    {% endfor %}
+
+
+    {% else %}
+    <div class="row justify-content-center">
+        <div class="col-lg-3 text-center">
+            <div class="section-title">
+                <h1>Nothing Products</h1>
+            </div>
+        </div>
+    </div>
+    
+{% endif %}
+{% endblock %}
